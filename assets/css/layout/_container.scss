@@ -1,0 +1,50 @@
+
+.l-container {
+  max-width: 1140px;
+  margin: auto;
+  @include breakpoint(1200 down) {
+    padding: 0 32px;
+  }
+  @include breakpoint(medium down) {
+    padding: 0 16px;
+  }
+
+  &.is-sm {
+    max-width: 944px;
+    @include breakpoint(1000 down) {
+      padding: 0 16px;
+    }
+  }
+}
+
+
+.l-two-column {
+  max-width: 1140px;
+  margin: auto;
+  display: flex;
+  align-items: stretch;
+  @include breakpoint(1200 down) {
+    padding: 0 32px;
+  }
+  @include breakpoint(medium down) {
+    padding: 0 16px;
+    display: block;
+  }
+  &__main {
+    max-width: calc(1140 - 240);
+    margin-right: rem-calc(56);
+    width: 100%;
+    @include breakpoint(medium down) {
+      margin: auto;
+    }
+  }
+
+  &__aside {
+    max-width: rem-calc(240);
+    width: 100%;
+    @include breakpoint(medium down) {
+      max-width: inherit;
+      margin-top: rem-calc(40);
+    }
+  }
+}

@@ -1,0 +1,30 @@
+.l-header {
+  &__content {
+    display: flex;
+    align-items: center;
+    padding: rem-calc(20);
+  }
+  &__logo {
+    margin: 0;
+    width: rem-calc(80);
+  }
+
+  &__nav {
+    margin-left: auto;
+    &-list {
+      display: flex;
+      align-items: center;
+    }
+    &-item {
+      margin-right: rem-calc(16);
+      &:last-child {
+        margin-right: 0;
+      }
+    }
+
+    &-link {
+      display: block;
+      text-decoration: none;
+    }
+  }
+}

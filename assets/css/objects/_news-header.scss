@@ -1,0 +1,41 @@
+
+.c-news-header {
+  &__title {
+    margin: 0;
+    @include font-format(28, .05, 42, bold);
+    @include breakpoint(medium down) {
+      @include font-format(24, .05, 32, bold);
+    }
+  }
+
+  &__image {
+    margin-top: rem-calc(32);
+  }
+
+  &__sup {
+    display: flex;
+    align-items: center;
+    margin-top: rem-calc(24);
+  }
+
+  &__label {
+    display: flex;
+    align-items: center;
+    span {
+      display: inline-block;
+      @include font-format(14, .05, 14, normal);
+      padding: rem-calc(4) rem-calc(8);
+      border: 1px solid $color-primary;
+      color: $color-primary;
+      margin-left: rem-calc(8);
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+  }
+
+  &__data {
+    @include font-format(16, .05, 16, normal);
+    margin-left: rem-calc(20);
+  }
+}

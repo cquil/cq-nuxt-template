@@ -1,0 +1,54 @@
+
+.c-heading {
+  margin: 0;
+  font-weight: bold;
+}
+
+.c-heading {
+  // h1
+  &.is-xlg {
+    @include font-format(32, .05, 42, bold);
+    @include breakpoint(medium down) {
+      @include font-format(28, .05, 32, bold);
+    }
+  }
+
+  // h2
+  &.is-lg {
+    @include font-format(28, .05, 42, bold);
+    @include breakpoint(medium down) {
+      @include font-format(24, .05, 32, bold);
+      padding: rem-calc(8);
+    }
+  }
+
+  // h3
+  &.is-md {
+    @include font-format(24, .06, 32, bold);
+    @include breakpoint(medium down) {
+      @include font-format(22, .05, 28, bold);
+    }
+  }
+
+  // h4
+  &.is-sm {
+    @include font-format(20, .05, 30, bold);
+    @include breakpoint(medium down) {
+      @include font-format(18, .05, 26, bold)
+    }
+  }
+
+  // h5
+  &.is-xs {
+    @include font-format(18, .05, 26, bold);
+    @include breakpoint(medium down) {
+      @include font-format(16, .05, 24, bold)
+    }
+  }
+
+  // h6
+  &.is-xxs {
+    @include font-format(16, .05, 24, bold);
+  }
+
+}

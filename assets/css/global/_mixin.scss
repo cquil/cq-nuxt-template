@@ -1,0 +1,202 @@
+@use "sass:math";
+
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    // @return $number / ($number * 0 + 1);
+    @return math.div($number , ($number * 0 + 1));
+  }
+
+  @return $number;
+}
+
+// rem へ変換
+@function to-rem($value, $base: null) {
+  @if type-of($value) != 'number' {
+    @warn inspect($value) + ' was passed to rem-calc(), which is not a number.';
+    @return $value;
+  }
+
+  @if unit($value) != 'rem' {
+    $value: math.div(strip-unit($value) , strip-unit($base)) * 1rem;
+  }
+
+  @if $value == 0rem {
+    $value: 0;
+  }
+  @return $value;
+}
+
+// rem 計算
+@function rem-calc($values, $base: null) {
+  $rem-values: ();
+  $count: length($values);
+
+  @if $base == null {
+    $base: $font-base-size;
+  }
+
+  @if unit($base) == '%' {
+    $base: ($base / 100%) * 16px;
+  }
+
+  @if $count == 1 {
+    @return to-rem($values, $base);
+  }
+
+  @for $i from 1 through $count {
+    $rem-values: append($rem-values, to-rem(nth($values, $i), $base));
+  }
+
+  @return $rem-values;
+}
+
+// em へ変換
+@function to-em($value) {
+  @if unit($value) == 'px' or unitless($value) {
+    $value: rem-calc($value, $base: 16px);
+  }
+  @return strip-unit($value) * 1em;
+}
+
+// ブレイクポイントのテキストを返す
+@function breakpoint($val: small) {
+
+  $bp: nth($val, 1);
+
+  $bp-max: 0;
+
+  $dir: if(length($val) > 1, nth($val, 2), up);
+
+  $str: '';
+
+  $named: false;
+
+  @if $bp == 'landscape' or $bp == 'portrait' {
+    @return '(orientation: #{$bp})';
+  }
+  @else if $bp == 'retina' {
+    @return '(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi)';
+  }
+
+
+  @if type-of($bp) == 'string' {
+    @if map-has-key($breakpoints, $bp) {
+      @if $dir == 'only' or $dir == 'down' {
+        $next-bp: map-next($breakpoints, $bp);
+
+        @if $next-bp == null {
+          $bp-max: null;
+          @warn 'breakpoint(): the media query "#{$val}" cannot be used because #{$bp} is the largest breakpoint.';
+        }
+        @else {
+          $bp-max: $next-bp;
+        }
+      }
+
+      $bp: map-get($breakpoints, $bp);
+      $named: true;
+    }
+    @else {
+      $bp: 0;
+    }
+  }
+
+  $bp: to-em($bp);
+  @if $bp-max {
+    $bp-max: to-em($bp-max) - math.div(1,16);
+  }
+
+  @if $bp > 0em or $dir == 'only' or $dir == 'down' {
+
+    @if $dir == 'only' {
+      @if $named == true {
+        $str: $str + '(min-width: #{$bp})';
+
+        @if $bp-max != null {
+          $str: $str + ' and (max-width: #{$bp-max})';
+        }
+      }
+      @else {
+        @warn 'Only named media queries can have an `only` range.';
+      }
+    }
+
+    @else if $dir == 'down' {
+      $max: 0;
+
+      @if $named {
+        $max: $bp-max;
+      }
+      @else {
+        $max: $bp;
+      }
+
+      @if $named or $bp > 0em {
+        $str: $str + '(max-width: #{$max})';
+      }
+    }
+    @else if $bp > 0em {
+      $str: $str + '(min-width: #{$bp})';
+    }
+  }
+  @return $str;
+}
+
+
+// ブレイクポイントを出力
+@mixin breakpoint($value) {
+  $str: breakpoint($value);
+
+  @if $str == '' {
+    @content;
+  }
+
+  @else {
+    @media screen and #{$str} {
+      @content;
+    }
+  }
+}
+
+
+// map にアクセス
+@function map-next($map, $key) {
+  $values: map-values($map);
+
+  $i: 1;
+  $found: false;
+  @each $val in map-keys($map) {
+    @if $found == false {
+      @if ($key == $val) {
+        $found: true;
+      }
+      $i: $i + 1;
+    }
+  }
+  @if $i > length($map) {
+    @return null;
+  }
+  @else {
+    @return nth($values, $i);
+  }
+}
+
+
+@mixin font-format($size : $font-base-size, $letter : null , $height: 24, $weight : null ) {
+  //letter と weight が "" で送られてきてもnull扱いにする
+  @if ($letter == "") {
+    $letter: null;
+  }
+  @if ($weight == "") {
+    $weight: null;
+  }
+
+  font-size: rem-calc($size);
+  line-height: calc(#{$height} / #{$size});
+  @if ($letter) { //nullにするとCSS出力をスキップします
+    --letter-spacing: #{$letter + em};
+  }
+  @if ($weight) { //nullもしくは記載しないとCSS出力をスキップします
+    font-weight: $weight;
+  }
+}

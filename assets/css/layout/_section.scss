@@ -1,0 +1,115 @@
+@use "sass:math";
+
+$xlg: 120;
+$lg: 100;
+$md: 80;
+$sm: 64;
+$xs: 40;
+$xxs: 20;
+
+
+.l-section {
+
+  &.is-xlg {
+    padding: rem-calc($xlg) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($xlg) * .5 0;
+    }
+  }
+
+  &.is-lg {
+    padding: rem-calc($lg) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($lg) * .5 0;
+    }
+  }
+
+  &.is-md {
+    padding: rem-calc($md) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($md) * .5 0;
+    }
+  }
+
+  &.is-sm {
+    padding: rem-calc($sm) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($sm) * .5 0;
+    }
+  }
+
+  &.is-xs {
+    padding: rem-calc($xs) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($xs) * .5 0;
+    }
+  }
+
+  &.is-xxs {
+    padding: rem-calc($xxs) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($xxs) * .5
+    }
+  }
+
+  &.is-top {
+    padding-bottom: 0;
+  }
+
+  &.is-bottom {
+    padding-top: 0;
+  }
+
+}
+
+.l-article {
+  &.is-xlg {
+    padding: rem-calc($xlg) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($xlg) * .5 0;
+    }
+  }
+
+  &.is-lg {
+    padding: rem-calc($lg) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($lg) * .5 0;
+    }
+  }
+
+  &.is-md {
+    padding: rem-calc($md) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($md) * .5 0;
+    }
+  }
+
+  &.is-sm {
+    padding: rem-calc($sm) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($sm) * .5 0;
+    }
+  }
+
+  &.is-xs {
+    padding: rem-calc($xs) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($xs) * .5 0;
+    }
+  }
+
+  &.is-xxs {
+    padding: rem-calc($xxs) 0;
+    @include breakpoint(medium down) {
+      padding: rem-calc($xxs) * .5
+    }
+  }
+
+  &.is-top {
+    padding-bottom: 0;
+  }
+
+  &.is-bottom {
+    padding-top: 0;
+  }
+}

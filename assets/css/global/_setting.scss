@@ -1,0 +1,43 @@
+
+@use "sass:math";
+
+// # 1. mainColor
+$color-white : #fff !default;
+$color-black : #000 !default;
+
+$color-primary: #3e3ee5 !default;
+$color-secondary : #3e3e9e !default;
+$color-gray : #ccc !default;
+
+// # 2. font
+$font-base-size: 16 !default;
+$font-base-line-height: 1.75 !default;
+$font-base-letter-spacing: 0.05em !default;
+$font-base-color: #222 !default;
+$font-base-family: 'Zen Maru Gothic', sans-serif !default;
+$font-base-weight: normal !default;
+$font-base-style: normal !default;
+
+
+// # 3. border
+$border-base-color: #CCC;
+$border-base-width: 1px !default;
+$border-radius: 5px !default;
+$border: $border-base-width solid $border-base-color;
+
+
+// # 4. background
+$color-background: #f3f3f3;
+
+
+// # 5. breakpoint
+
+$breakpoints: (
+        small: 0,
+        medium: 750px,
+        large: 950px,
+        xlarge: 1140px,
+        xxlarge: 1440px,
+) !default;
+
+$breakpoint-classes: (small medium large) !default;

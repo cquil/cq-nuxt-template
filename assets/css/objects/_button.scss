@@ -1,0 +1,21 @@
+.c-button {
+  display: inline-block;
+  text-decoration: none;
+  @include font-format(14, .05, 14, normal);
+  padding: rem-calc(14) rem-calc(32);
+  text-align: center;
+  border: 1px solid $color-primary;
+  background: $color-primary;
+  color: $color-white;
+  margin: 0;
+  @include breakpoint(medium down) {
+    width: 100%;
+
+  }
+
+  &.is-lg {
+    max-width: rem-calc(356);
+    width: 100%;
+    padding: rem-calc(24);
+  }
+}

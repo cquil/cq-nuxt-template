@@ -1,0 +1,92 @@
+
+.l-post-content {
+  h2 {
+    @include font-format(28, .05, 42, bold);
+    background: rgba($color-primary,.2);
+    padding: rem-calc(12);
+
+    @include breakpoint(medium down) {
+      @include font-format(24, .05, 32, bold);
+      padding: rem-calc(8);
+    }
+  }
+
+  h3 {
+    @include font-format(24, .06, 32, bold);
+    padding-bottom: rem-calc(8);
+    border-bottom: 3px solid $color-primary;
+
+    @include breakpoint(medium down) {
+      @include font-format(22, .05, 28, bold);
+    }
+  }
+
+  h4 {
+    @include font-format(20, .05, 30, bold);
+    position: relative;
+    padding-left: rem-calc(18);
+    @include breakpoint(medium down) {
+      @include font-format(18, .05, 26, bold)
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      margin: auto;
+      width: rem-calc(10);
+      height: rem-calc(10);
+      border-radius: 50%;
+      border: 2px solid $color-primary;
+    }
+  }
+
+  h5 {
+    @include font-format(18, .05, 26, bold);
+  }
+
+  h6 {
+    @include font-format(16, .05, 24, bold);
+  }
+
+  p {}
+
+  img {
+    margin: rem-calc(24) 0;
+  }
+
+  ul {
+    padding-left: rem-calc(16);
+    li {
+      list-style-type: disc;
+    }
+  }
+
+  code {
+    background: #21213b;
+    padding: rem-calc(2) rem-calc(6);
+    color: white;
+  }
+
+  pre > code {
+    background: #21213b;
+    padding: rem-calc(16);
+    color: white;
+    line-height: 2;
+    display: block;
+    @include breakpoint(medium down) {
+      display: inline-block;
+    }
+  }
+
+  
+
+  pre.language-scss{
+    color: #bf4080;
+  }
+  blockquote {
+    padding: 1em 1.5em;
+    border-left: 4px solid #d6dde3;
+  }
+}
