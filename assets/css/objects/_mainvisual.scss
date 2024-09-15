@@ -1,4 +1,6 @@
 .c-mainvisual {
   display: block;
-  
+  &__image {
+    text-align: center;
+  }
 }

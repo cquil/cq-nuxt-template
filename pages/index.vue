@@ -1,4 +1,5 @@
 <script setup>
+
 useHead({
   title: 'base Page',
   meta: [
@@ -9,6 +10,7 @@ useHead({
 </script>
 
 <template lang="pug">
+<Mainvisual />
 
 section.l-section
   .l-container
@@ -16,6 +18,6 @@ section.l-section
 </template>
 
 <style lang="scss">
-  
+
 
 </style>
