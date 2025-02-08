@@ -2,10 +2,11 @@
 
 </script>
 
-<template lang="pug">
+<template>
 <Header />
-main.l-main
-  <slot />
+  <main >
+    <slot />
+  </main>
 <Footer />
 </template>
 

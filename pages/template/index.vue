@@ -7,10 +7,8 @@ useHead({
 })
 </script>
 
-<template lang="pug">
-section.l-section
-  .l-container
-    h2 template Page
+<template>
+
 </template>
 
 <style lang="scss">

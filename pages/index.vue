@@ -9,12 +9,9 @@ useHead({
 
 </script>
 
-<template lang="pug">
+<template>
 <Mainvisual />
 
-section.l-section
-  .l-container
-    h2 Base Page
 </template>
 
 <style lang="scss">
